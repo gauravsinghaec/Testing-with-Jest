@@ -1,6 +1,6 @@
-import Employee from "./Employee";
-import { Company } from "./Company";
-jest.mock("./Employee");
+import Employee from "../Employee";
+import { Company } from "../Company";
+jest.mock("../Employee");
 
 describe("Test Company", () => {
   beforeEach(() => {
