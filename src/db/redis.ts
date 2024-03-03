@@ -1,14 +1,16 @@
 import Redis from "ioredis";
-export default class RedisClient {
+export class RedisClient {
   client: Redis;
   constructor(config?: any) {
     this.client = new Redis(config);
   }
-  getPost = async (key: string) => {
+  // with jest automock (redis.test.ts) - the class method (this.client.get , this.client.set) that will be replaced with mock functions and returns undefined
+  async getPost(key: string) {
     const value = await this.client.get(key);
     return value;
-  };
-  addEmployee = async (key: string, value: string) => {
+  }
+  async addEmployee(key: string, value: string) {
     await this.client.set(key, value);
-  };
+    return true;
+  }
 }
