@@ -1,4 +1,4 @@
-import { Employee } from "./Employee";
+import Employee from "./Employee";
 export class Company {
   name: string;
   size: number;
@@ -11,6 +11,7 @@ export class Company {
   employeeOnboarding = async (name: string, age: number) => {
     const emp = new Employee();
     await emp.addEmployee(name, age);
+    return true;
   };
   getPost = async (name: string) => {
     const emp = new Employee();

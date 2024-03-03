@@ -4,7 +4,7 @@ const getRedisClient = () => {
   const redisConfig = { host: "localhost", port: 6379 };
   return new RedisClient(redisConfig);
 };
-export class Employee {
+export default class Employee {
   addEmployee = async (name: string, age: number) => {
     try {
       const redis = getRedisClient();
@@ -15,7 +15,7 @@ export class Employee {
       throw e;
     }
   };
-  getEmployeePosts = async (name: string) => {
+  async getEmployeePosts(name: string) {
     try {
       const redis = getRedisClient();
       return await redis.getPost(name);
@@ -23,5 +23,5 @@ export class Employee {
       console.log(e);
       throw e;
     }
-  };
+  }
 }

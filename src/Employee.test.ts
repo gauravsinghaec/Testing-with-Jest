@@ -1,7 +1,7 @@
-import { Employee } from "./Employee";
+import Employee from "./Employee";
 
 describe("Test Company", () => {
-  it("should be successfully adding employee details to server - addEmployee", () => {
+  it("should be successfully adding employee details to server - addEmployee", async () => {
     const emp = new Employee();
     expect(emp).toBeDefined();
   });
