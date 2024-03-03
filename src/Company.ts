@@ -10,8 +10,8 @@ export class Company {
   }
   employeeOnboarding = async (name: string, age: number) => {
     const emp = new Employee();
-    await emp.addEmployee(name, age);
-    return true;
+    const result = await emp.addEmployee(name, age);
+    return result;
   };
   getPost = async (name: string) => {
     const emp = new Employee();

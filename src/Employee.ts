@@ -5,22 +5,20 @@ const getRedisClient = () => {
   return new RedisClient(redisConfig);
 };
 export default class Employee {
-  // with jest automock (Company.test.ts) - this class method(arrow function) will not be part of the mocks and accessing this method with throw error
   addEmployee = async (name: string, age: number) => {
     try {
       const redis = getRedisClient();
-      await redis.addEmployee(name, JSON.stringify({ name, age }));
-      return true;
+      const result = await redis.addValue(name, JSON.stringify({ name, age }));
+      return result;
     } catch (e) {
       console.log(e);
       throw e;
     }
   };
-  // with jest automock (Company.test.ts) - this class method that will be replaced with mock functions and returns undefined
   async getEmployeePosts(name: string) {
     try {
       const redis = getRedisClient();
-      return await redis.getPost(name);
+      return await redis.getValue(name);
     } catch (e) {
       console.log(e);
       throw e;
